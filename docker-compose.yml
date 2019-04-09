@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  # app:
-  #   build: .
-  #   command: go run server.go
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     - .:/go/src/github.com/yama-koo/ziocloud-example/
+  app:
+    build: .
+    command: go run server.go
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/go/src/github.com/yama-koo/zipcloud-example/
   db:
     image: mysql:5.7.25
     environment:
