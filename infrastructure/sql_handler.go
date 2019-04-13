@@ -31,7 +31,7 @@ func GormConnect() *gorm.DB {
 func (handler *SQLHandler) FindByID(id int) (zipcode domain.Zipcode, err error) {
 	err = handler.DB.Where(&domain.Zipcode{ID: id}).First(&zipcode).Error
 	if err != nil {
-		return domain.Zipcode{}, nil
+		return domain.Zipcode{}, err
 	}
 
 	return zipcode, nil
