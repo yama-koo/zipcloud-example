@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	router := infrastructure.Router{}
-	router.Initialize()
-	router.Router.Run()
+	r := infrastructure.Router{}
+	r.Initialize()
+	r.Router.Run()
 }
