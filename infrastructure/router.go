@@ -36,10 +36,16 @@ func (r *Router) Initialize() {
 		},
 	}
 
+	// FIXME:
+	// /zipcodes/:zipcode
+	// /zipcodes/:id
+	// みたいなエンドポイントの共存ができないので
+	// なんか変になってる
+	// echoならできる？
 	router.GET("/zipcodes/search/:zipcode", func(c *gin.Context) { controller.Search(c) })
 	// router.GET("/zipcodes", func(c *gin.Context) { controller.FindAll(c) })
 	router.GET("/zipcodes/find/:id", func(c *gin.Context) { controller.FindByID(c) })
-	// router.POST("/zipcodes", func(c *gin.Context) { controller.Create(c) })
+	router.POST("/zipcodes/create", func(c *gin.Context) { controller.Create(c) })
 	// router.DELETE("/zipcodes/:id", func(c *gin.Context) { controller.Delete(c) })
 
 	r.Router = router

@@ -18,7 +18,7 @@ func GormConnect() *gorm.DB {
 	PROTOCOL := "tcp(db:3306)"
 	DBNAME := "zipcloud"
 
-	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME
+	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?parseTime=true"
 	db, err := gorm.Open(DBMS, CONNECT)
 
 	if err != nil {
@@ -35,4 +35,13 @@ func (handler *SQLHandler) FindByID(id int) (zipcode domain.Zipcode, err error) 
 	}
 
 	return zipcode, nil
+}
+
+// Create func
+func (handler *SQLHandler) Create(zipcode domain.Zipcode) error {
+	err := handler.DB.Create(&zipcode).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }
