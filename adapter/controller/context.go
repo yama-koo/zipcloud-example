@@ -4,4 +4,5 @@ package controller
 type Context interface {
 	Param(string) string
 	JSON(code int, obj interface{})
+	BindJSON(interface{}) error
 }

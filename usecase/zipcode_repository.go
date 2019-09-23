@@ -7,4 +7,5 @@ import (
 // ZipcodeRepository interface
 type ZipcodeRepository interface {
 	FindByID(int) (domain.Zipcode, error)
+	Create(domain.Zipcode) error
 }

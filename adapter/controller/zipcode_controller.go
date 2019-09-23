@@ -3,6 +3,8 @@ package controller
 import (
 	"strconv"
 
+	"github.com/yama-koo/zipcloud-example/domain"
+
 	"github.com/yama-koo/zipcloud-example/usecase"
 )
 
@@ -33,8 +35,21 @@ func (con *ZipcodeController) Search(c Context) {
 }
 
 // Create func
-func (con *ZipcodeController) Create() {
+func (con *ZipcodeController) Create(c Context) {
+	var body domain.Zipcode
+	err := c.BindJSON(&body)
+	if err != nil {
+		c.JSON(500, map[string]interface{}{"message": err.Error()})
+		return
+	}
 
+	err = con.ZipcodeInteractor.Create(body)
+	if err != nil {
+		c.JSON(500, map[string]interface{}{"message": err.Error()})
+		return
+	}
+
+	c.JSON(200, nil)
 }
 
 // FindByID func

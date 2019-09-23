@@ -19,3 +19,13 @@ func (interactor *ZipcodeInteractor) FindByID(id int) (domain.Zipcode, error) {
 
 	return zipcode, nil
 }
+
+// Create func
+func (interactor *ZipcodeInteractor) Create(zipcode domain.Zipcode) error {
+	err := interactor.ZipcodeRepository.Create(zipcode)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
